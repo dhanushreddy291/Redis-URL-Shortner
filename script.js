@@ -28,7 +28,7 @@ const displayURL = (URL) => {
 async function sendJSON(URLJSON) {
   var response = "Redis Server Error";
   try {
-    response = await fetch("http://localhost:4000", {
+    response = await fetch("https://redis-url-shortner-backend-production.up.railway.app", {
       method: "POST",
       body: URLJSON,
       mode: "cors",
