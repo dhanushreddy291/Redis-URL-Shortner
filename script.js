@@ -19,7 +19,7 @@ function copyToClipBoard(URLToCopy) {
 }
 
 const displayURL = (URL) => {
-  const urlToShow = "https://redis-url-shortner-backend-production.up.railway.app/" + URL;
+  const urlToShow = "https://shorty.up.railway.app/" + URL;
   document.getElementById("urlcontainer").innerHTML = urlToShow;
   document.getElementById("urlcontainer").href = URL;
   copyToClipBoard(urlToShow);
@@ -28,7 +28,7 @@ const displayURL = (URL) => {
 async function sendJSON(URLJSON) {
   var response = "Redis Server Error";
   try {
-    response = await fetch("http://localhost:4000", {
+    response = await fetch("https://shorty.up.railway.app", {
       method: "POST",
       body: URLJSON,
       mode: "cors",
