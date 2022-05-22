@@ -14,13 +14,13 @@ const generateRandomURL = (length) => {
 };
 
 function copyToClipBoard(URLToCopy) {
-  console.log("Copied IG");
   const cb = navigator.clipboard;
   cb.writeText(URLToCopy).then(() => alert("URL Copied"));
 }
 
 const displayURL = (URL) => {
-  const urlToShow = "http://localhost:4000/" + URL;
+  const urlToShow =
+    "https://redis-url-shortner-backend-production.up.railway.app/" + URL;
   document.getElementById("urlcontainer").innerHTML = urlToShow;
   document.getElementById("urlcontainer").href = URL;
   copyToClipBoard(urlToShow);
