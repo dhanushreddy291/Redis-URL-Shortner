@@ -19,7 +19,7 @@ function copyToClipBoard(URLToCopy) {
 }
 
 const displayURL = (URL) => {
-  const urlToShow = "https://shorty.up.railway.app/" + URL;
+  const urlToShow = "https://shorty.up.railway.app//" + URL;
   document.getElementById("urlcontainer").innerHTML = urlToShow;
   document.getElementById("urlcontainer").href = URL;
   copyToClipBoard(urlToShow);
@@ -28,7 +28,7 @@ const displayURL = (URL) => {
 async function sendJSON(URLJSON) {
   var response = "Redis Server Error";
   try {
-    response = await fetch("https://shorty.up.railway.app", {
+    response = await fetch("https://shorty.up.railway.app/", {
       method: "POST",
       body: URLJSON,
       mode: "cors",
@@ -42,10 +42,25 @@ async function sendJSON(URLJSON) {
   return response;
 }
 
+function validURL(link) {
+  var valid = link.match(
+    /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g
+  );
+  return valid !== null;
+}
+
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  const URL = longURL.value;
-  const randURL = generateRandomURL(5);
-  displayURL(randURL);
-  sendJSON(JSON.stringify({ CPURL: randURL, UNCPURL: URL }));
+  var URL = longURL.value;
+  if (!(URL.indexOf("http://") == 0 || URL.indexOf("https://") == 0)) {
+    URL = "http://" + URL;
+  }
+  if (!validURL(URL)) {
+    alert("Enter a Valid URL");
+  } else {
+    console.log("URL = " + URL);
+    const randURL = generateRandomURL(5);
+    displayURL(randURL);
+    sendJSON(JSON.stringify({ CPURL: randURL, UNCPURL: URL }));
+  }
 });
