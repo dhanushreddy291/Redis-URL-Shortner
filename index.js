@@ -4,6 +4,7 @@ const express = require("express");
 dotenv.config();
 const app = express();
 app.use(express.json());
+app.use(express.static(__dirname));
 
 const port = 4000;
 
@@ -34,11 +35,17 @@ app.post("/", async (req, res) => {
   res.json(myJson);
 });
 
-app.get("/:id", async (req, res) => {
-  const origURL = await HSETSearch(req.params.id);
-  if (origURL) {
-    res.json({ origURL, exists: "true" });
-  } else res.json({ exists: "false" });
+app.get("/:url", async (req, res) => {
+  if (req.params.url !== "favicon.ico") {
+    const URLParam = await HSETSearch(req.params.url);
+    if (URLParam !== null) {
+      res.redirect(302, URLParam);
+    } else res.send("Inavlid URL");
+  }
+});
+
+app.get("/", async (req, res) => {
+  res.render(__dirname + "/index.html");
 });
 
 app.listen(port, () => {
