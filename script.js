@@ -20,7 +20,7 @@ function copyToClipBoard(URLToCopy) {
 }
 
 const displayURL = (URL) => {
-  const urlToShow = "http://localhost:4000/" + URL;
+  const urlToShow = "https://redis-url-shortner-backend-production.up.railway.app/" + URL;
   document.getElementById("urlcontainer").innerHTML = urlToShow;
   document.getElementById("urlcontainer").href = URL;
   copyToClipBoard(urlToShow);
