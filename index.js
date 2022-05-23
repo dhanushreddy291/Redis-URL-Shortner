@@ -3,8 +3,9 @@ const dotenv = require("dotenv");
 const express = require("express");
 const path = require("path");
 const app = express();
+app.disable("x-powered-by");
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
 dotenv.config();
 
 const Port = 4000;
@@ -27,9 +28,7 @@ const addUrlToRedis = async (key, value) => {
 
 app.post("/", async (req, res) => {
   let myJson = req.body;
-  if (myJson != undefined) {
-    myValue = myJson.CPURL;
-    myOtherValue = myJson.UNCPURL;
+  if (myJson !== undefined) {
     addUrlToRedis(myJson.CPURL, myJson.UNCPURL);
   }
   console.log(myJson.UNCPURL + " => " + myJson.CPURL);
@@ -41,7 +40,7 @@ app.get("/:url", async (req, res) => {
     const URLParam = await HSETSearch(req.params.url);
     if (URLParam !== null) {
       res.redirect(302, URLParam);
-    } else res.sendFile(path.join(__dirname, '/public', "/invalid.html"));
+    } else res.sendFile(path.join(__dirname, "/public", "/invalid.html"));
   }
 });
 

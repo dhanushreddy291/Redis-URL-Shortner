@@ -1,5 +1,4 @@
 const longURL = document.querySelector("#url-to-shorten");
-const shortenURLButton = document.querySelector("#shorten-url-button");
 const form = document.querySelector("#URLForm");
 
 const characters =
@@ -28,7 +27,7 @@ const displayURL = (URL) => {
 async function sendJSON(URLJSON) {
   var response = "Redis Server Error";
   try {
-    response = await fetch("https://shorty.up.railway.app", {
+    response = await fetch("/", {
       method: "POST",
       body: URLJSON,
       mode: "cors",
@@ -52,7 +51,7 @@ function validURL(link) {
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   var URL = longURL.value;
-  if (!(URL.indexOf("http://") == 0 || URL.indexOf("https://") == 0)) {
+  if (!(URL.indexOf("http://") === 0 || URL.indexOf("https://") === 0)) {
     URL = "http://" + URL;
   }
   if (!validURL(URL)) {
