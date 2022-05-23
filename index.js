@@ -28,7 +28,7 @@ const addUrlToRedis = async (key, value) => {
 
 app.post("/", async (req, res) => {
   let myJson = req.body;
-  if (myJson !== undefined) {
+  if (typeof myJson !== "undefined") {
     addUrlToRedis(myJson.CPURL, myJson.UNCPURL);
   }
   console.log(myJson.UNCPURL + " => " + myJson.CPURL);
