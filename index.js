@@ -1,9 +1,10 @@
 const Redis = require("ioredis");
 const dotenv = require("dotenv");
 const express = require("express");
+const path = require("path");
 const app = express();
 app.use(express.json());
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, 'public')));
 dotenv.config();
 
 const Port = 4000;
@@ -40,12 +41,12 @@ app.get("/:url", async (req, res) => {
     const URLParam = await HSETSearch(req.params.url);
     if (URLParam !== null) {
       res.redirect(302, URLParam);
-    } else res.send("Inavlid URL");
+    } else res.sendFile(path.join(__dirname, '/public', "/invalid.html"));
   }
 });
 
 app.get("/", async (req, res) => {
-  res.render(__dirname + "/index.html");
+  res.render("/index.html");
 });
 
 app.listen(Port, () => {

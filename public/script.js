@@ -19,7 +19,7 @@ function copyToClipBoard(URLToCopy) {
 }
 
 const displayURL = (URL) => {
-  const urlToShow = "https://shorty.up.railway.app/" + URL;
+  const urlToShow = "https://4000-dhanushredd-redisurlsho-pp3xymdcobp.ws-us45.gitpod.io/" + URL;
   document.getElementById("urlcontainer").innerHTML = urlToShow;
   document.getElementById("urlcontainer").href = URL;
   copyToClipBoard(urlToShow);
@@ -28,7 +28,7 @@ const displayURL = (URL) => {
 async function sendJSON(URLJSON) {
   var response = "Redis Server Error";
   try {
-    response = await fetch("https://shorty.up.railway.app/", {
+    response = await fetch("https://4000-dhanushredd-redisurlsho-pp3xymdcobp.ws-us45.gitpod.io/", {
       method: "POST",
       body: URLJSON,
       mode: "cors",
@@ -58,7 +58,6 @@ form.addEventListener("submit", (e) => {
   if (!validURL(URL)) {
     alert("Enter a Valid URL");
   } else {
-    console.log("URL = " + URL);
     const randURL = generateRandomURL(5);
     displayURL(randURL);
     sendJSON(JSON.stringify({ CPURL: randURL, UNCPURL: URL }));
