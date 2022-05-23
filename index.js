@@ -1,12 +1,12 @@
 const Redis = require("ioredis");
 const dotenv = require("dotenv");
 const express = require("express");
-dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(express.static(__dirname));
+dotenv.config();
 
-const port = 4000;
+const Port = 4000;
 
 const redis = new Redis({
   port: process.env.port,
@@ -48,6 +48,6 @@ app.get("/", async (req, res) => {
   res.render(__dirname + "/index.html");
 });
 
-app.listen(port, () => {
-  console.log(`Redis URL Shortner Backend Listening on ${port}`);
+app.listen(Port, () => {
+  console.log(`Redis URL Shortner Listening on ${Port}`);
 });
