@@ -19,7 +19,7 @@ function copyToClipBoard(URLToCopy) {
 }
 
 const displayURL = (URL) => {
-  const urlToShow = "https://4000-dhanushredd-redisurlsho-pp3xymdcobp.ws-us45.gitpod.io/" + URL;
+  const urlToShow = "https://shorty.up.railway.app/" + URL;
   document.getElementById("urlcontainer").innerHTML = urlToShow;
   document.getElementById("urlcontainer").href = URL;
   copyToClipBoard(urlToShow);
@@ -28,7 +28,7 @@ const displayURL = (URL) => {
 async function sendJSON(URLJSON) {
   var response = "Redis Server Error";
   try {
-    response = await fetch("https://4000-dhanushredd-redisurlsho-pp3xymdcobp.ws-us45.gitpod.io/", {
+    response = await fetch("https://shorty.up.railway.app", {
       method: "POST",
       body: URLJSON,
       mode: "cors",
