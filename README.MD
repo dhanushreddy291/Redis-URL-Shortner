@@ -1,0 +1,5 @@
+# Redis URL Shortner
+
+## This is a simple URL shortner made using NodeJS (Express) and Redis (used ioredis JS client). Deployed the app on [deta.sh](https://www.deta.sh/).
+
+### I have deployed the app currently on a free tier of Redis from [Redis.com](https://redis.com/). The free version currently doesnot offer persistence of data incase of a rare outage. For this reason, if you are thinking to fork and make your own URL Shortner you can try using [Upstash.com](https://upstash.com/) which features persistence of data and even using normal HTTP calls to store the data, rather than TCP connection which is currently required to connect to Redis. You can also serverless frameworks such as [Cloudflare Workers](https://workers.cloudflare.com/) or [AWS Lambda](https://aws.amazon.com/lambda/) to further simplify the code backend while using Upstash. [Deta.sh](https://www.deta.sh/) is a free cloud hosting service that is free for developers and provides deployment of Unlimited NodeJS and Python apps for individual developers free of cost.
