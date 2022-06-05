@@ -4,6 +4,32 @@ const form = document.querySelector("#URLForm");
 const characters =
   "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
+const setColor = (color) => {
+  document
+    .querySelector(":root")
+    .style.setProperty("--color-primary", color, null);
+};
+
+const backGroundColors = [
+  "#764AF1",
+  "#FF4949",
+  "#DEA057",
+  "#FF8C32",
+  "#F24A72",
+  "#F0A500",
+  "#5463FF",
+  "#CC9544",
+  "#5FD068",
+  "#F47C7C",
+  "#9772FB",
+  "#F8B400",
+  "#4D96FF",
+  "#E84545",
+  "#E8505B",
+  "#FF9292",
+];
+setColor(backGroundColors[Math.floor(Math.random() * backGroundColors.length)]);
+
 const generateRandomURL = (length) => {
   let result = "";
   for (let i = 0; i < length; i++) {
